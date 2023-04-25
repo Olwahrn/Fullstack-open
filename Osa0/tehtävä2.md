@@ -23,8 +23,4 @@ sequenceDiagram
     server ->> browser: Json file
     deactivate server
 
-    browser ->> server: https://studies.cs.helsinki.fi/favicon.ico
-    activate server
-    server ->> browser: HTML file / course stats
-    deactivate server
-
+    Note right of browser: The browser executes the callback function that renders the notes 
