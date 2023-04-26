@@ -1,6 +1,6 @@
 const App = () => {
   const course = 'Half Stack application development'
-  const given = [
+  const data = [
     {name: 'Fundamentals of React', exc: 10},
     {name: 'Using props to pass data', exc: 7},
     {name: 'State of a component', exc: 14}
@@ -8,37 +8,39 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <Content/>
-      <Total/>
-    </div>
-  );
-};
+      <Total data = {data}/>
+      <Content props = {data}/>
+      </div>
+  )
+}
+export default App;
 
 
-const Part = (num) => {
+const Part = (props) => {
   return (
         <p>
-        {App.given[num].name}{App.given[num]} 
+        {props.name} {props.exc}
         </p>
         )
-    }
+  }
 const Header = ({course}) => {
   return <h1>{course}</h1>;
-};
-const Content = () => {
+}
+const Content = ({props}) => {
   return (
     <div>
-        <Part num ={0}/>
-        <Part num ={1}/>
-        <Part num ={2}/>
+        <Part name={props[0].name} exc={props[0].exc}/>
+        <Part name={props[1].name} exc={props[1].exc}/>
+        <Part name={props[2].name} exc={props[2].exc}/>
     </div>
   
   );
 
-};
-const Total = () => {
+}
+const Total = ({data}) => {
   return (
-    <p>Number of exercises{App.given[0].exc + App.given[1].exc + App.given[2].exc}</p>
-  );
-};
-export default App;
+    <p>
+      Number of exercises {data[0].exc + data[1].exc + data[2].exc}
+    </p>
+  )
+}
